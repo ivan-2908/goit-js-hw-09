@@ -29,6 +29,7 @@ const options = {
 
     function countdownTime() {
         timer = setInterval(() => {
+        dateChosen.disabled = true;
         startBtn.disabled = true;
 
         const dateChoosenMs = new Date(dateChosen.value.replace(/-/g, '/')).getTime();
@@ -44,6 +45,7 @@ const options = {
         if (timeLeft < 1000) {
             clearInterval(timer);
             startBtn.disabled = false; 
+            dateChosen.disabled = false;
         }
         }, 1000);
     }

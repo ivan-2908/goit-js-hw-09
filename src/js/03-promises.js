@@ -15,6 +15,13 @@ function submitCreatePromises(e) {
   const delayStepMsVal = delayStepMs.valueAsNumber;
   const amountVal = amount.valueAsNumber;
 
+  let step = delayStepMsVal;
+
+  if (step < 0 || delay < 0 || amountVal <= 0) {
+    Notiflix.Notify.failure('Step, delay or amount is not valid');
+    return;
+  }
+
   for (let i = 1; i <= amountVal; i++) {
     createPromise(i, delay)
       .then(({ position, delay }) => {
